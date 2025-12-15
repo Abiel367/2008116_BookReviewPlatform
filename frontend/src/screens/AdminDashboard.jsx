@@ -17,7 +17,7 @@ import { useAuth } from '../context/AuthContext';
 import axios from 'axios';
 
 // Define the API URL for the backend
-// const API_URL = 'http://192.168.50.143:8000'; // Uncomment this line for testing on a specific IP
+// const API_URL = 'http://192.168.50.143:8000'; // memba to uncomment this line for testing on a specific IP
 const API_URL = 'http://localhost:8000'; // Use localhost for local development
 
 const AdminDashboard = () => {
@@ -771,5 +771,6 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
 });
+
 
 export default AdminDashboard;
