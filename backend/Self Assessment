@@ -1,0 +1,33 @@
+Self‑Assessment
+Looking back at building the backend for my Book Review Platform, I want to be real about how it went, what I did well, where I struggled, and what I learned. It definitely wasn’t perfect, but it felt like genuine progress.
+
+What Went Well
+im pretty proud of how I structured the backend. I made sure to brak things into different files like main.py for routes, auth.py for login logic, and so on, which kept things organized and made it way easier to find my way around the code. I wasnt just copying a template I thought about how to separate concerns from the start.
+
+I also got a lot more comfortable with FastAPI. I used dependency injection for protected routes instead of just hard coding checks, which felt cleaner and more scalable. Setting up custom authentication was a big win for me I implemented a PIN‑based login, JWT tokens, roles (user vs admin), and even account lockout after too many failed attempts. It was rewarding to build that logic myself and really understand how the flow worked.
+
+When things broke (and they did), I didnt give up. Id hit runtime errors or endpoints returning weird status codes, but I stuck with it, testing things step by step, reading error messages closely, and asking for help when I was truly stuck. It was frustrating sometimes, but it also felt like real development work.
+
+What Could’ve Gone Better
+My biggest regret is not testing enough as I went. Id write a few endpoints, tell myself “Ill test them later,” and then end up with a pile of errors all at once. That made debugging overwhelming and ate up a lot of time that I couldve saved by checking each piece right after I wrote it.
+
+I also struggled with time management toward the end. As the deadline got closer, I started jumping between problems instead of tackling them one at a time. That left me stressed and knocked my confidence a bit and the pressure made everything feel messier.
+
+Looking back at my code, I wish I’d left more comments especially around the auth logic and admin routes. I knew what it did while I was writing it, but if someone else looked at it, theyd have to trace through everything. A few clear notes wouldve gone a long way.
+
+And honestly, I waited too long to ask for help on a few tricky parts. I spent hours trying to debug something on my own before finally getting a second opinion which usually cleared things up way faster. Next time, I’ll reach out sooner.
+
+What I’ll Take With Me
+This project showed me that I can design and build a working backend from scratch, which feels really good. But it also reminded me that good habits like testing as you go, managing your time calmly, and writing readable code are just as important as the technical stuff.
+
+Moving forward, I want to:
+
+Test endpoints right after I write them, not in a batch at the end
+
+Start debugging earlier and prioritize one issue at a time
+
+Leave better comments, especially in complex sections
+
+Ask for help or clarification sooner when I’m stuck
+
+Even with the bumps along the way, I’m walking away from this with more skill and more humility—and that feels like real growth.
