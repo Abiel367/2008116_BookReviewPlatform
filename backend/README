@@ -1,0 +1,260 @@
+Book Review Platform API
+A RESTful API for a book review platform with PIN-based authentication, built with FastAPI and PostgreSQL.
+
+Features
+PIN-based authentication (4-digit PIN)
+
+Book review management (CRUD operations)
+
+User roles (user/admin)
+
+Advanced search and filtering
+
+Admin moderation tools (soft delete, user management)
+
+Rate limiting and account lockout
+
+Docker containerization
+
+PostgreSQL database
+
+Prerequisites
+Python 3.9+
+
+Docker and Docker Compose (optional)
+
+
+Quick Start with Docker (Recommended)
+
+
+Run the application:
+
+in terminal:
+docker-compose up --build
+
+Access the API:
+
+API URL: http://localhost:8000
+
+API Documentation: http://localhost:8000/docs
+
+Health Check: http://localhost:8000/health
+
+Default Admin Credentials:
+
+Name: Abiel Robinson
+
+PIN: 0000
+
+
+API Endpoints
+Authentication
+Method	Endpoint	Description
+POST	/auth/register	Register new user (auto-generates PIN)
+POST	/auth/login	Login with name and PIN
+POST	/auth/admin/login	Admin login
+User Endpoints (Requires Authentication)
+Method	Endpoint	Description
+GET	/reviews	Get all reviews with filters
+GET	/reviews/my-reviews	Get current user's reviews
+POST	/reviews	Create a new review
+PUT	/reviews/{review_id}	Update a review
+DELETE	/reviews/{review_id}	Delete a review
+Admin Endpoints (Requires Admin Role)
+Method	Endpoint	Description
+GET	/admin/reviews	Get all reviews (including archived)
+POST	/admin/reviews/{review_id}/archive	Archive a review (soft delete)
+GET	/admin/users	Get all users
+DELETE	/admin/users/{user_id}	Delete a user
+Query Parameters for /reviews
+search: Search in title, author, or review text
+
+genre: Filter by genre (see available genres below)
+
+rating: Filter by rating (1-5)
+
+my_reviews: Boolean, set to true to get only user's reviews
+
+skip: Pagination offset
+
+limit: Pagination limit (default: 100)
+
+Data Models
+User
+json
+{
+  "id": 1,
+  "full_name": "John Doe",
+  "pin_code": "1234",
+  "role": "user",
+  "created_at": "2024-01-15T10:30:00Z"
+}
+Review
+json
+{
+  "id": 1,
+  "user_id": 1,
+  "book_title": "The Great Gatsby",
+  "author": "F. Scott Fitzgerald",
+  "rating": 5,
+  "review_text": "A classic novel about the American Dream.",
+  "genre": "Fiction",
+  "created_at": "2024-01-15T10:35:00Z",
+  "updated_at": "2024-01-15T10:35:00Z",
+  "user_name": "John Doe"
+}
+Available Genres
+Fiction
+
+Non-Fiction
+
+Mystery
+
+Romance
+
+Science Fiction
+
+Fantasy
+
+Biography
+
+History
+
+Self-Help
+
+Young Adult
+
+Authentication Flow
+Registration:
+
+Send name to /auth/register
+
+Receive auto-generated 4-digit PIN
+
+Store PIN securely
+
+Login:
+
+Send name and PIN to /auth/login
+
+Receive JWT token
+
+Include token in Authorization header: Bearer <token>
+
+Security Features:
+
+Account lockout after 3 faied attempts (30-minute lock)
+
+Case-insensitive name matching
+
+24-hour token expiration
+
+Database Schema
+text
+User
+- id (PK)
+- full_name (indexed)
+- pin_code (4 digits)
+- role (user/admin)
+ - created_at
+
+Review
+id (PK)
+user_id (FK to User.id)
+-book_title
+- author
+ rating (1-5)
+- review_text
+-genre (Enum)
+-is_archived (soft delete)
+-created_at
+-updated_at
+Error Handling
+Common HTTP status codes:
+
+200: Success
+
+400: Bad request
+
+401: Unauthorized (invalid PIN/token)
+
+403: Forbidden (insufficient permissions)
+
+404: Resource not found
+
+429: Too many requests (account locked)
+
+500: Internal server error
+
+Development
+Project Structure
+-main.py           # FastAPI application and endpoints
+- models.py         # SQLModel schemas and enums
+ -auth.py           # Authentication and security
+ -database.py       # Database configuration
+ -requirements.txt  # Python dependencies
+ -Dockerfile        # Container configuration
+- docker-compose.yml # Multi-container setup
+Environment Variables
+Variable	Description	Default
+DATABASE_URL	PostgreSQL connection string	Local or Docker URL
+SECRET_KEY	JWT secret key	"secret"
+
+# Add tests to your project
+pytest tests/
+Troubleshooting
+Common Issues
+Database Connection Error:
+
+Check if PostgreSQL is running
+
+Verify credentials in database.py
+
+For Docker: wait for database to initialize (5-10 seconds)
+
+Port Already in Use:
+
+
+# Clean build
+docker-compose down -v
+docker-compose build --no-cache
+docker-compose up
+Logs
+bash
+# Docker logs
+docker-compose logs -f backend
+docker-compose logs -f db
+
+# Check database
+docker exec -it bookreview_db psql -U user1 -d resilience_db
+Security Notes
+Change the default admin PIN (0000) in production
+
+Use strong SECRET_KEY in production
+
+Implement HTTPS in production
+
+Regularly rotate database credentials
+
+Consider adding email verification for registration
+
+API Documentation
+Interactive API documentation is available at:
+
+Swagger UI: http://localhost:8000/docs
+
+ReDoc: http://localhost:8000/redoc
+
+License
+This project is for educational purposes. Modify as needed for production use.
+
+Support
+For issues or questions:
+
+Check the troubleshooting section
+
+Review API documentation
+
+Ensure all prerequisites are met
+
+Check Docker logs for errors
