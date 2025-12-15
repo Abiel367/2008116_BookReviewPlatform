@@ -1,9 +1,35 @@
-Self-Assessment – Frontend Development
+Self‑Assessment
 
-Working on the frontend for the Book Review Platform has been both challenging and educational. One of my key strengths throughout this project was my understanding of React Native fundamentals. I was able to create multiple screens, including the Welcome screen, user login and registration, admin login, the user dashboard, and the review form. I successfully applied functional components along with hooks like useState and useEffect to manage state and component lifecycles. Additionally, I structured an authentication context (AuthContext) and set up API integration with axios, demonstrating a solid grasp of token-based authentication and handling POST, PUT, and GET requests. On the design side, I made deliberate choices to create a readable and modular layout, including the use of buttons, lists, modals, and forms, even though I could not fully test the UI.
+Looking back at building the frontend for my Book Review Platform, I want to be real about how it went, what I did well, where I struggled, and what I learned. It definitely wasn’t perfect and it didnt feel like a made any progress.
 
-Despite these achievements, I faced several significant challenges. Setting up the development environment was one of the biggest obstacles. The Android SDK was not installed correctly, and adb was not recognized in the terminal, which prevented me from running the app on an emulator or physical device. Additionally, dependency issues such as missing or unresolved packages (@react-native-async-storage/async-storage) blocked the app from running entirely. I also encountered deprecated components like SafeAreaView and version mismatches in Expo, which further complicated testing. Network errors prevented me from verifying API calls in practice, leaving some logic untested, and the inability to run Expo meant I could not validate visual elements or user interactions, such as selecting a genre or submitting a review.
+What Went Well
 
-Through these difficulties, I learned the importance of a proper development environment. Setting up the SDK, ensuring compatibility between Expo and dependencies, and configuring system paths are all critical steps that can make or break the ability to test and iterate on a project. I also recognized the value of writing modular, well-structured code. By keeping components and logic separate, I was able to make meaningful progress even when the app could not run, which will make debugging and UI testing easier in the future. Using AI assistance effectively was another learning point; I relied on guidance for code patterns, explanations, and troubleshooting tips, but I wrote all the core functionality myself. This approach allowed me to understand the concepts rather than simply copying solutions.
+I’m proud of how I structured the frontend code. I split components logically, screens like WelcomeScreen, UserDashboard, and ReviewFormScreen were separate, and context and navigation were organized clearly. Using React Native functional components with hooks, I managed state, navigation, and API calls in a way that made sense and stayed readable. I also implemented modals, forms, and filtering logic, showing that I could translate design ideas into functional UI components, even if I couldn’t test them fully.
 
-Going forward, my action plan includes resolving the environment issues by installing the Android SDK, setting the ANDROID_HOME path, ensuring adb is accessible, and updating all necessary packages. Once the environment is functional, I will test the frontend thoroughly, focusing on UI behavior, user interactions, and API integration. I also plan to continue documenting the prompts and guidance I receive from AI to improve my workflow in future projects. Overall, despite the challenges, this project has strengthened my understanding of React Native development, taught me how to approach technical problems systematically, and reinforced the importance of combining independent coding with strategic AI assistance.
+Working with the authentication context was a highlight. I set up token management and user roles in the frontend to match the backend, and I integrated axios calls with headers for authorization. It helped me understand how frontend and backend communicate and gave me more confidence in structuring an app end-to-end. Even though I couldn’t see the screens live on a device, writing the logic carefully and anticipating UI behavior strengthened my React Native skills.
+
+When I hit errors, I didn’t give up. Missing dependencies, deprecation warnings, and broken links to the Android SDK all threw me off, but I dug through logs, researched solutions, and made adjustments where I could. That persistence reinforced my troubleshooting mindset, but was stil very discoraging beacuse i couldnt resolve the main issue of getting expo go ap to work
+
+What Could’ve Gone Better
+
+The biggest challenge was the development environment. Missing Android SDK paths, unrecognized adb commands, and failed package resolutions (like @react-native-async-storage/async-storage) made it impossible to run the app properly. Because of this, I couldn’t verify UI behavior, test API calls in real time, or see if modals and lists worked as intended. That made debugging and iteration slower and more abstract, which was frustrating.
+
+I also realized I didn’t plan for environment setup early enough. I spent time writing code assuming it would run, then got blocked by configuration issues. This caused stress and left me second-guessing some design decisions because I couldn’t see them in action. Time management became an issue as I tried to fix environment errors while continuing to write new code.
+
+Finally, I could have added more comments and documentation as I went. Without live testing, it’s harder to remember the purpose of each function or prop later. More inline notes would have made it easier to debug and hand off the project in the future.
+
+What I’ll Take With Me
+
+This project showed me that I can build structured React Native code with state, context, navigation, and API integration, even in challenging conditions. But it also reminded me that environment setup and testing are just as important as coding itself.
+
+Moving forward, I want to:
+
+Set up and verify my development environment first before writing new code
+
+Test UI and API interactions incrementally, not all at once
+
+Add clear comments and documentation for complex logic
+
+Prioritize solving blockers early instead of pushing forward blindly
+
+Even with the environment issues and untested components, I’m walking away with a better understanding of React Native development, context management, and how frontend interacts with backend—and that feels like real growth.
